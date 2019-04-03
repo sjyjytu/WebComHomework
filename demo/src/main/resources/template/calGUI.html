@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<body>
+    <h1>欢迎使用Spring版计算器</h1>
+    <p th:text="${hello}"></p>
+    <form action="/calculate" method="post">
+        <div>
+            <label for="name">输入您的表达式：</label>
+            <input type="text" id="name" />
+        </div>
+        <div class="button">
+            <button type="submit">计算</button>
+        </div>
+    </form>
+    <p th:text="${result}"></p>
+</body>
+</html>
