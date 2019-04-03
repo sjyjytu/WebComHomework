@@ -13,7 +13,7 @@ public class caculate {
             //结束了
             return result;
         }
-        if (t.type != 2) {
+        if (t.type != 2 && t.type != 3) {
             throw new MyException("expression error1.");
         } else {
             switch (t.value) {
