@@ -25,4 +25,10 @@ public class GUIController {
         map.put("result", "结果：" + result);
         return "/calGUI";
     }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "/login";
+    }
+
 }

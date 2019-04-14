@@ -14,5 +14,8 @@
         </div>
     </form>
     <p th:text="${result}"></p>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="注销"/>
+    </form>
 </body>
 </html>
