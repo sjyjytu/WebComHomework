@@ -8,46 +8,56 @@ public class calculate {
     }
     public float readE(tokenStream tks) throws MyException{
         float result = readT(tks);
-        Token t = tks.get();
-        if (t.type == 0) {
-            //结束了
-            return result;
-        }
-        if (t.type != 2 && t.type != 3) {
-            throw new MyException("expression error1.");
-        } else {
-            switch (t.value) {
-                case '+':
-                    return result + readT(tks);
-                case '-':
-                    return result - readT(tks);
-                default:
-                    tks.unget(t);
-                    return result;
+        while (true) {
+            Token t = tks.get();
+            if (t.type == 0) {
+                //结束了
+                return result;
+            }
+            if (t.type != 2 && t.type != 3) {
+                throw new MyException("expression error1.");
+            } else {
+                switch (t.value) {
+                    case '+':
+                        result += readT(tks);
+                        break;
+                    case '-':
+                        result -= readT(tks);
+                        break;
+                    default:
+                        tks.unget(t);
+                        return result;
+                }
             }
         }
+
     }
 
     public float readT(tokenStream tks) throws MyException{
         float result = readP(tks);
-        Token t = tks.get();
-        if (t.type == 0) {
-            //结束了
-            return result;
-        }
-        if (t.type != 2 && t.type != 3) {
-            throw new MyException("expression error2.");
-        } else {
-            switch (t.value) {
-                case '*':
-                    return result * readP(tks);
-                case '/':
-                    return result / readP(tks);
-                case '%':
-                    return result % readP(tks);
-                default:
-                    tks.unget(t);
-                    return result;
+        while (true) {
+            Token t = tks.get();
+            if (t.type == 0) {
+                //结束了
+                return result;
+            }
+            if (t.type != 2 && t.type != 3) {
+                throw new MyException("expression error2.");
+            } else {
+                switch (t.value) {
+                    case '*':
+                        result *= readP(tks);
+                        break;
+                    case '/':
+                        result /= readP(tks);
+                        break;
+                    case '%':
+                        result %= readP(tks);
+                        break;
+                    default:
+                        tks.unget(t);
+                        return result;
+                }
             }
         }
     }

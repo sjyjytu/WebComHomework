@@ -6,14 +6,11 @@
 </head>
 <body>
     <h1>欢迎使用Spring版计算器</h1>
-    <p th:text="${hello}"></p>
-    <form action="/calculate" method="post">
+    <form action="guiCal" method="post">
         <div>
-            <label for="name">输入您的表达式：</label>
-            <input type="text" id="name" />
-        </div>
-        <div class="button">
-            <button type="submit">计算</button>
+            <label for="line">输入您的表达式：</label>
+            <input type="text" id="line" name="line" value=""/>
+            <input type="submit" value="计算" />
         </div>
     </form>
     <p th:text="${result}"></p>

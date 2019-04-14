@@ -4,7 +4,6 @@ import com.example.demo.service.calculate;
 import static org.junit.Assert.*;
 import com.example.demo.controller.DirectController;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,48 +15,36 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-
 @RunWith(SpringRunner.class)
-    @SpringBootTest
-public class CustomerControllerTest {
+@SpringBootTest
+public class ActuatorTest {
     private MockMvc mvc;
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new DirectController()).build();
     }
-
     @Test
     public void getHello() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
     }
-
     @Test
     public void getCalResultOnline() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/calculate/(1+1)*2-3").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/calculate?line=(1+1)*2-3").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("(1+1)*2-3 = 1.0000"))
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn();
-    }
-
-    @Test
-    public void getCalResultOnline2() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/calculate").accept(MediaType.APPLICATION_JSON).param("line","32*-13.6"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("32*-13.6 = -435.2000"))
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
     }
     @Test
-    public void getCalResultOnline3() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/calculate").accept(MediaType.APPLICATION_JSON).param("line","(18.2*3.34)/(2.4-3)+23.567*1.2"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("(18.2*3.34)/(2.4-3)+23.567*1.2 = -73.0330"))
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn();
+    public void getCalResult() throws Exception {
+        calculate c = new calculate();
+        assertEquals(c.cal("1+1/(1)"),"2.0000");
+        assertEquals(c.cal("32*-13.6"),"-435.2000");
+        assertEquals(c.cal("(18.2*3.34)/(2.4-3)+23.567*1.2"),"-73.0330");
+        assertEquals(c.cal("2*3*4"),"24.0000");
+        assertEquals(c.cal("1+(1+1)"),"3.0000");
+        assertEquals(c.cal("12/6+2*8+1"),"19.0000");
     }
 }
