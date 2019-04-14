@@ -45,7 +45,7 @@ public class WebSecurityTest {
      * @throws Exception
      */
     @Test
-    @WithMockUser(authorities = {"JY"})
+    @WithMockUser(roles = {"USER"})
     public void testHello() throws Exception
     {
         MvcResult mvcResult = mockMvc

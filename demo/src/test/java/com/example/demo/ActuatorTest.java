@@ -23,6 +23,39 @@ public class ActuatorTest {
     public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new DirectController()).build();
     }
+    @Test
+    public void info() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/actuator/info").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 
+    @Test
+    public void health() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/actuator/health").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 
+    @Test
+    public void conditions() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/actuator/conditions").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
+    @Test
+    public void beans() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/actuator/beans").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 }
