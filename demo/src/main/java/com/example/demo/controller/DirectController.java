@@ -16,6 +16,7 @@ public class DirectController {
     }
 
     @RequestMapping("/calculate/{line}")
+    @PreAuthorize("hasAuthority('JY')")
     public String calOnline(@PathVariable("line") String line) {
         calculate c = new calculate();
         return line + " = " + c.cal(line);

@@ -36,6 +36,15 @@ public class CustomerControllerTest {
     }
 
     @Test
+    public void info() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/info").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Hello World"))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
+    @Test
     public void getCalResultOnline() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/calculate/(1+1)*2-3").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

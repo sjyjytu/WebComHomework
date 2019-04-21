@@ -6,8 +6,10 @@ import com.example.demo.controller.DirectController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -16,11 +18,17 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = DemoApplication.class)
+@TestPropertySource(properties = {"management.port=0"})
 public class ActuatorTest {
     private MockMvc mvc;
+
+    @Value("${local.server.port}")
+    int port;
+
     @Before
     public void setUp() throws Exception {
+        //RestAssured.port = port;
         mvc = MockMvcBuilders.standaloneSetup(new DirectController()).build();
     }
     @Test
