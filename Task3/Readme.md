@@ -6,7 +6,7 @@ My docker image can be found at my [dockerhub](<https://cloud.docker.com/u/ketia
 
 ---
 
-My docker file can be found [here](/Dockfile). 
+My docker file can be found [here](/Dockerfile). 
 
 ---
 
