@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.calculate;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ public class GUIController {
     }
 
     @RequestMapping(value = "guiCal", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ADMIN')")
     public String guiCal(HttpServletRequest request, HashMap<String, Object> map) {
         String line = request.getParameter("line");
         System.out.println(line);

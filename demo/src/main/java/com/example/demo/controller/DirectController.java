@@ -10,13 +10,23 @@ import java.util.HashMap;
 @RestController
 public class DirectController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('JY')")
-    public String index() {
+    public String hello() {
         return "Hello World";
     }
 
+    @RequestMapping(value = "/bye", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
+    public String goodbye() {
+        return "Good bye";
+    }
+
+    @RequestMapping("/403")
+    public String error(){
+        return "403";
+    }
+
     @RequestMapping("/calculate/{line}")
-    @PreAuthorize("hasAuthority('JY')")
+    @PreAuthorize("hasRole('ADMIN')")
     public String calOnline(@PathVariable("line") String line) {
         calculate c = new calculate();
         return line + " = " + c.cal(line);
