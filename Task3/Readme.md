@@ -2,7 +2,7 @@
 
 ---
 
-My docker image can be found at my [dockerhub](<https://cloud.docker.com/u/ketianya/repository/docker/ketianya/calculator>).
+My docker image can be found at my [dockerhub](<https://hub.docker.com/r/ketianya/calculator>).
 
 ---
 
