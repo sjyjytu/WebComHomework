@@ -4,19 +4,19 @@
 
 * no requests
 
-![no_requests](G:\JavaCode\WebComHomework\Task2\no_requests.png)
+![no_requests](./no_requests.png)
 
 * 50 requests
 
-![50requests](G:\JavaCode\WebComHomework\Task2\50requests.png)
+![50requests](./50requests.png)
 
 * 500 requests
 
-![500requests](G:\JavaCode\WebComHomework\Task2\500requests.png)
+![500requests](./500requests.png)
 
 * 5000 requests
 
-![5000requests](G:\JavaCode\WebComHomework\Task2\5000requests.png)
+![5000requests](./5000requests.png)
 
 We can see that as the amount of requests increase, the consumption of memory grows a lot, and the CPU usage rate has a great gap between no request and having requests, but not so obvious between more requests and less request.
 
@@ -28,20 +28,20 @@ We can see that as the amount of requests increase, the consumption of memory gr
 
   * cpu and memory
 
-  ![10threads-cpu](G:\JavaCode\WebComHomework\Task2\10threads-cpu.png)
+  ![10threads-cpu](./10threads-cpu.png)
 
   * network
 
-  ![10threads-net](G:\JavaCode\WebComHomework\Task2\10threads-net.png)
+  ![10threads-net](./10threads-net.png)
 
 * 50 threads
 
   * cpu and memory
 
-  ![50threads-cpu](G:\JavaCode\WebComHomework\Task2\50threads-cpu.png)
+  ![50threads-cpu](./50threads-cpu.png)
 
   * network
 
-  ![50threads-net](G:\JavaCode\WebComHomework\Task2\50threads-net.png)
+  ![50threads-net](./50threads-net.png)
 
 The more thread we use, we get higher error rate and longer request time. 
