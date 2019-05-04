@@ -2,11 +2,11 @@
 
 正例：
 
-![success](/image/success.png)
+![success](image/success.png)
 
 
 
 反例：
 
-![fail](/image/fail.png)
+![fail](image/fail.png)
 
