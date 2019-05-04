@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 @RestController
 public class DirectController {
+    private calculate c = new calculate();
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() {
         return "Hello World";
@@ -28,19 +30,16 @@ public class DirectController {
     @RequestMapping("/calculate/{line}")
     @PreAuthorize("hasRole('ADMIN')")
     public String calOnline(@PathVariable("line") String line) {
-        calculate c = new calculate();
         return line + " = " + c.cal(line);
     }
 
     @RequestMapping("/calculate")
     public String calPost(@RequestParam("line") String line) {
-        calculate c = new calculate();
         return line + " = " + c.cal(line);
     }
 
     @RequestMapping("/calculater")
     public String calPostman(@RequestBody Line line) {
-        calculate c = new calculate();
         return line + " = " + c.cal(line.getLine());
     }
 }

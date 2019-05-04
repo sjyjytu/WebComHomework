@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 @Controller
 public class GUIController {
+    private calculate c = new calculate();
+
     @RequestMapping("/gui")
     public String helloHtml(HashMap<String, Object> map) {
         map.put("result", "结果：");
@@ -22,7 +24,6 @@ public class GUIController {
     public String guiCal(HttpServletRequest request, HashMap<String, Object> map) {
         String line = request.getParameter("line");
         System.out.println(line);
-        calculate c = new calculate();
         String result = c.cal(line);
         map.put("result", "结果：" + result);
         return "/calGUI";
