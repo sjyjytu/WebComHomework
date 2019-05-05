@@ -83,7 +83,11 @@ My docker file can be found [here](<https://github.com/sjyjytu/WebComHomework/bl
    docker run --rm --name your_container_name -d -p 8888:8080 your_image_name:your_image_version
    ~~~
 
-   Here 8888 is the port of your host, is casual, you can use 1234,2345,3456,3242...... whatever you want!
+   Here 8888 is the port of your host, is the port that others want to visit you by. It is casual, you can use 1234,2345,3456,3242...... whatever you want! But remember that create a security group on your Aliyun.
 
-   But 8080 is assigned in the Dockerfile, you can change it in the Dockerfile.
+   ![security](security.png)
+
+   And 8080 is the port of your container(maybe your tomcat's port, which is defined in application.properties in maven project).
+
+   ![application.properties](application.png)
 
