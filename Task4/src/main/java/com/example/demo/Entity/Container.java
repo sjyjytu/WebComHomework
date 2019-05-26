@@ -30,7 +30,19 @@ public class Container {
         return getContainer();
     }
 
-    static public void checkTimeout() {
+    static public void removeTimeoutItem() {
+        while (true) {
+            if (container.isEmpty()) {
+                break;
+            }
+            if (new Date().getTime() - container.get(0).getAddTime().getTime() < timeout) {
+                break;
+            }
+            container.remove(0);
+        }
+    }
 
+    static public boolean isEmpty() {
+        return container.isEmpty();
     }
 }
